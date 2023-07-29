@@ -107,9 +107,9 @@
        resource_tags: 
         Name: Vpro_PubRT
        subnets:
-        - "{{PubSub1_out.subnet.id}}"
-        - "{{PubSub2_out.subnet.id}}"
-        - "{{PubSub3_out.subnet.id}}"
+        - "{{Pubsub1_out.subnet.id}}"
+        - "{{Pubsub2_out.subnet.id}}"
+        - "{{Pubsub3_out.subnet.id}}"
        routes:
         - dest: 0.0.0.0/0
           gateway_id: "{{igw_out.gateway_id}}"   
@@ -131,9 +131,9 @@
        resource_tags: 
         Name: Vpro_PrivRT
        subnets:
-        - "{{PrivSub1_out.subnet.id}}"
-        - "{{PrivSub2_out.subnet.id}}"
-        - "{{PrivSub3_out.subnet.id}}"
+        - "{{Privsub1_out.subnet.id}}"
+        - "{{Privsub2_out.subnet.id}}"
+        - "{{Privsub3_out.subnet.id}}"
        routes:
         - dest: 0.0.0.0/0
           gateway_id: "{{Nat_out.gateway_id}}"   
