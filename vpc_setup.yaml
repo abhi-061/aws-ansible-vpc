@@ -121,7 +121,7 @@
        subnet_id: "{{Pubsub1_out.subnet.id}}"
        wait: yes
        region: "{{region}}"
-       if_esixt_do_not_create: true
+       if_exist_do_not_create: true
      register: Nat_out
 
    - name: Create a Priv subnet Routetable
