@@ -90,3 +90,16 @@
        resource_tags: 
         Name: Vpro_privsub3
      register: Privsub3_out       
+
+   - name: Create a Internet gateway
+     ec2_vpc_igw:
+       vpc_id: "{{vpout.vpc.id}}"
+       region: "{{region}}"
+       state: "{{state}}"
+       resource_tags: 
+        Name: Vpro_IGW
+     register: igw_out
+       
+
+
+         
