@@ -99,6 +99,21 @@
        resource_tags: 
         Name: Vpro_IGW
      register: igw_out
+
+   - name: Create a Pub subnet Routetable
+     ec2_vpc_route_table:
+       vpc_id: "{{vpout.vpc.id}}"
+       region: "{{region}}"
+       resource_tags: 
+        Name: Vpro_PubRT
+       subnets:
+        - "{{Pubsub1_out.subnet.id}}"
+        - "{{Pubsub2_out.subnet.id}}"
+        - "{{Pubsub3_out.subnet.id}}"
+       routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{igw_out.gateway_id}}"   
+     register: pub_rt_out   
        
 
 
