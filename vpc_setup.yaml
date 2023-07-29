@@ -64,8 +64,8 @@
        cidr: "{{PrivSub1Cidr}}"
        map_public: yes
        resource_tags: 
-        Name: Vpro_pubsub1
-     register: Pubsub1_out 
+        Name: Vpro_privsub1
+     register: Privsub1_out 
 
    - name: Create Privsub2 in Zone 2
      ec2_vpc_subnet: 
@@ -76,8 +76,8 @@
        cidr: "{{PrivSub2Cidr}}"
        map_public: yes
        resource_tags: 
-        Name: Vpro_pubsub2
-     register: Pubsub2_out
+        Name: Vpro_privsub2
+     register: Privsub2_out
 
    - name: Create Privsub3 in Zone 3
      ec2_vpc_subnet: 
@@ -88,5 +88,5 @@
        cidr: "{{PrivSub3Cidr}}"
        map_public: yes
        resource_tags: 
-        Name: Vpro_pubsub3
-     register: Pubsub3_out       
+        Name: Vpro_privsub3
+     register: Privsub3_out       
