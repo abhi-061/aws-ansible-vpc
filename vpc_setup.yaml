@@ -140,7 +140,7 @@
      register: priv_rt_out  
 
    - debug: 
-       var: "{item}"
+       var: "{{item}}"
      loop: 
        - vpout.vpc.id
        - Pubsub1_out.subnet.id
