@@ -107,14 +107,34 @@
        resource_tags: 
         Name: Vpro_PubRT
        subnets:
-        - "{{Pubsub1_out.subnet.id}}"
-        - "{{Pubsub2_out.subnet.id}}"
-        - "{{Pubsub3_out.subnet.id}}"
+        - "{{PubSub1_out.subnet.id}}"
+        - "{{PubSub2_out.subnet.id}}"
+        - "{{PubSub3_out.subnet.id}}"
        routes:
         - dest: 0.0.0.0/0
           gateway_id: "{{igw_out.gateway_id}}"   
      register: pub_rt_out   
        
+   - name: Create a new nat gateway and allocate new EIP if a nat gateeay does not exist in the nat gateway
+     ec2_vpc_nat_gateway:
+       state: "{{state}}"
+       subnet_id: "{{Pubsub1_out.subnet.id}}"
+       wait: yes
+       region: "{{region}}"
+       if_esixt_do_not_create: true
+     register: Nat_out
 
-
-         
+   - name: Create a Priv subnet Routetable
+     ec2_vpc_route_table:
+       vpc_id: "{{vpout.vpc.id}}"
+       region: "{{region}}"
+       resource_tags: 
+        Name: Vpro_PrivRT
+       subnets:
+        - "{{PrivSub1_out.subnet.id}}"
+        - "{{PrivSub2_out.subnet.id}}"
+        - "{{PrivSub3_out.subnet.id}}"
+       routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{Nat_out.gateway_id}}"   
+     register: priv_rt_out  
